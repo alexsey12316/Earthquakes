@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.probation.myapplication.ui.details.DetailViewModel" />
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/textView_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:visibility="@{viewModel.isNetErrorShow ? View.GONE:View.VISIBLE }"
+            app:earthquakeTypeText="@{viewModel.earthquake.mmi}"
+            app:layout_constraintBottom_toTopOf="@+id/textView_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mapView"
+            tools:text="Заголовок"/>
+
+        <TextView
+            android:id="@+id/textView_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{@string/time( viewModel.earthquake.strTime)}"
+            android:visibility="@{viewModel.isNetErrorShow ? View.GONE:View.VISIBLE }"
+            app:layout_constraintBottom_toTopOf="@+id/textView_magnitude"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_title"
+            tools:text="Дата"/>
+
+        <TextView
+            android:id="@+id/textView_magnitude"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{@string/magnitude(viewModel.earthquake.magnitude)}"
+            android:visibility="@{viewModel.isNetErrorShow ? View.GONE:View.VISIBLE }"
+            app:layout_constraintBottom_toTopOf="@+id/textView_depth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_date"
+            tools:text="Магнитуда"/>
+
+        <TextView
+            android:id="@+id/textView_depth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{@string/depth(viewModel.earthquake.depth)}"
+            android:visibility="@{viewModel.isNetErrorShow ? View.GONE:View.VISIBLE }"
+            app:layout_constraintBottom_toTopOf="@+id/textView_place"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_magnitude"
+            tools:text="Глубина"/>
+
+        <TextView
+            android:id="@+id/textView_place"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{@string/location(viewModel.earthquake.locality)}"
+            android:visibility="@{viewModel.isNetErrorShow ? View.GONE:View.VISIBLE }"
+            app:layout_constraintBottom_toTopOf="@id/textView_error"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_depth"
+            tools:text="Расположение"/>
+        <TextView
+            android:id="@+id/textView_error"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/network_error"
+            android:visibility="@{viewModel.isNetErrorShow ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_depth"
+            tools:text="Ошибка"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

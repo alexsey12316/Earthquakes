@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/sort_container"
+        android:title="@string/menu_sort"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/sort_item_all"
+                android:title="@string/menu_all"
+                android:icon="@drawable/ic_unnoticeable_earthquake"/>
+            <item
+                android:id="@+id/sort_item_weak"
+                android:title="@string/menu_weak"
+                android:icon="@drawable/ic_weak_earthquake"/>
+            <item
+                android:id="@+id/sort_item_light"
+                android:title="@string/menu_light"
+                android:icon="@drawable/ic_light_earthquake"/>
+            <item
+                android:id="@+id/sort_item_moderate"
+                android:title="@string/menu_moderate"
+                android:icon="@drawable/ic_moderate_earthquake"/>
+            <item
+                android:id="@+id/sort_item_strong"
+                android:title="@string/menu_strong"
+                android:icon="@drawable/ic_strong_earthquake"/>
+            <item
+                android:id="@+id/sort_item_severe"
+                android:title="@string/menu_severe"
+                android:icon="@drawable/ic_severe_earthquake"/>
+            <item
+                android:id="@+id/sort_item_extreme"
+                android:title="@string/menu_extreme"
+                android:icon="@drawable/ic_extreme_earthquake"/>
+        </menu>
+
+    </item>
+
+</menu>

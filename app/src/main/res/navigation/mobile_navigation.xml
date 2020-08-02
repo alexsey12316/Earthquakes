@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_earthquakes">
+
+    <fragment
+        android:id="@+id/navigation_earthquakes"
+        android:name="com.probation.myapplication.ui.earthquakes.EarthquakeFragment"
+        android:label="@string/title_earthquakes"
+        tools:layout="@layout/fragment_earthquakes" >
+        <action
+            android:id="@+id/action_navigation_earthquakes_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_statistics"
+        android:name="com.probation.myapplication.ui.statistics.StatisticsFragment"
+        android:label="@string/title_statistics"
+        tools:layout="@layout/fragment_statistics" />
+
+    <fragment
+        android:id="@+id/navigation_info"
+        android:name="com.probation.myapplication.ui.info.InfoFragment"
+        android:label="@string/title_info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.probation.myapplication.ui.details.DetailFragment"
+        android:label="@string/detail_title" >
+        <argument
+            android:name="publicID"
+            app:argType="string" />
+    </fragment>
+</navigation>

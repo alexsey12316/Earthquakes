@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">Earthquakes</string>
+    <string name="title_earthquakes">Землетресения</string>
+    <string name="title_statistics">Статистика</string>
+    <string name="title_info">Справка</string>
+
+
+    <string name="time">Время: %1$s</string>
+    <string name="power">Мощность: %1$s</string>
+    <string name="magnitude">Магнитуда: %1$f</string>
+    <string name="depth">Глубина: %1$f км.</string>
+    <string name="location">Местность: %1$s</string>
+
+    //Strings for earthquake power
+    <string name="unnoticeableEarthquake">Незаметное землетресение</string>
+    <string name="weakEarthquake">Слабое землетресение</string>
+    <string name="lightEarthquake">Лёгкое землетресение</string>
+    <string name="moderateEarthquake">Умеренное землетресение</string>i
+    <string name="strongEarthquake">Сильное землересение</string>
+    <string name="severeEarthquake">Разрушительное землетресение</string>
+    <string name="extremeEarthquake">Катастрофическое землетресение</string>
+
+    //string for sorting menu
+    <string name="menu_sort">Сортировать</string>
+    <string name="menu_all">Все</string>
+    <string name="menu_weak">Слабые+</string>
+    <string name="menu_light">Лёгкие+</string>
+    <string name="menu_moderate">Умеренные+</string>
+    <string name="menu_strong">Сильные+</string>
+    <string name="menu_severe">Разрушителные+</string>
+    <string name="menu_extreme">Катастрофические+</string>
+
+    <string name="unnoticeable">Незаметные</string>
+    <string name="weak">Слабые</string>
+    <string name="light">Лёгкие</string>
+    <string name="moderate">Умеренные</string>
+    <string name="strong">Сильные</string>
+    <string name="severe">Разрушителные</string>
+    <string name="extreme">Катастрофические</string>
+
+
+    <string name="for_week">За неделю</string>
+    <string name="for_month">За месяц</string>
+    <string name="for_year">За год</string>
+
+
+    <string name="bar_chart_description">За год</string>
+
+    <string name="menu_year_detail">Год подробно</string>
+    <string name="menu_year">Год</string>
+    <string name="menu_month">Месяц</string>
+    <string name="menu_week">Неделя</string>
+
+    <string name="info_text">Приложение использует https://api.geonet.org.nz/ для получения информации. Приложение имеет 3 основых раздела: землетресения, статистика, справка. В разделе
+    землетресения хранится список землетресений в RecycleView по клику на элемент можно перейти на фрагмент с картой. В разделе статистики находятся 4 графика. \n В процесе разработке
+        использовались следующие технологии:\n Retrofit2 \n Moshi \n Room\n Coroutines \n Binding \n Lifecycle \n Navigation and safeargs \n MVVM \n
+    \n\n Made by Seko Alexei \n</string>
+    <string name="detail_title">Карта</string>
+    <string name="network_error">Отсутствует подключение к интернету</string>
+
+
+</resources>
