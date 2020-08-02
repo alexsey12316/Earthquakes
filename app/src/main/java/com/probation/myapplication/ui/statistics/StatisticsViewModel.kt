@@ -48,7 +48,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
     val isRefreshing:LiveData<Boolean> get()=_isRefreshing
 
     init {
-        loadData()
+        loadDataAndCheck()
     }
 
     private fun refresh()
@@ -67,7 +67,35 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
         }
     }
 
-    private fun loadData()
+    private fun loadData() {
+
+        uiScope.launch {
+
+            if(_type.value==ShowChart.YEAR_DETAILS)
+            {
+                _barListEntry.value= withContext(Dispatchers.IO)
+                {
+                    repository.getYearDateStatistics().toListOfBarEntry()
+                }
+            }
+            else
+            {
+                _pieListEntry.value= withContext(Dispatchers.IO)
+                {
+                    repository.getRangeStatistics(when(_type.value){
+                        ShowChart.YEAR->statisticsType.YEAR
+                        ShowChart.MONTH->statisticsType.MONTH
+                        ShowChart.WEEK->statisticsType.WEEK
+                        else ->throw IllegalArgumentException("im pretty sure this is impossible")
+                    }).toListOfPieEntry()
+
+                }
+        }
+
+        }
+    }
+
+    private fun loadDataAndCheck()
     {
         uiScope.launch {
 
