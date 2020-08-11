@@ -13,11 +13,11 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 
-private const val BASE_URL="https://api.geonet.org.nz/"
+//private const val BASE_URL="https://api.geonet.org.nz/"
 
-private val moshi:Moshi= Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-private val retrofit:Retrofit=Retrofit.Builder().addConverterFactory(MoshiConverterFactory.create(moshi))
-    .addCallAdapterFactory(CoroutineCallAdapterFactory()).baseUrl(BASE_URL).build()
+//private val moshi:Moshi= Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+//private val retrofit:Retrofit=Retrofit.Builder().addConverterFactory(MoshiConverterFactory.create(moshi))
+//    .addCallAdapterFactory(CoroutineCallAdapterFactory()).baseUrl(BASE_URL).build()
 
 
 interface EarthquakesApiService {
@@ -32,8 +32,8 @@ interface EarthquakesApiService {
 
 }
 
-object EarthquakesApi
-{
-    val retrofitServise: EarthquakesApiService by lazy { retrofit.create(
-        EarthquakesApiService::class.java) }
-}
+//object EarthquakesApi
+//{
+//    val retrofitServise: EarthquakesApiService by lazy { retrofit.create(
+//        EarthquakesApiService::class.java) }
+//}

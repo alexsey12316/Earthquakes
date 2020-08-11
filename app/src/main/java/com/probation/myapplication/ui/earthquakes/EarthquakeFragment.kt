@@ -6,17 +6,21 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.probation.myapplication.R
 import com.probation.myapplication.database.Earthquake
 import com.probation.myapplication.databinding.FragmentEarthquakesBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_earthquakes.*
 
+
+@AndroidEntryPoint
 class EarthquakeFragment : Fragment() {
 
-    private lateinit var earthquakeViewModel:EarthquakeViewModel
+    private  val earthquakeViewModel:EarthquakeViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?): View? {
 
@@ -24,8 +28,8 @@ class EarthquakeFragment : Fragment() {
             inflater,R.layout.fragment_earthquakes,container,false)
 
         val application= requireNotNull(activity).application
-        val viewModelFactory=EarthquakeViewModelFactory(application)
-        earthquakeViewModel=ViewModelProvider(this,viewModelFactory).get(EarthquakeViewModel::class.java)
+//        val viewModelFactory=EarthquakeViewModelFactory(application)
+//        earthquakeViewModel=ViewModelProvider(this,viewModelFactory).get(EarthquakeViewModel::class.java)
 
 
 //        earthquakeViewModel.earthquakeList.observe(viewLifecycleOwner, Observer {

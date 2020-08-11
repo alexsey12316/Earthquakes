@@ -3,6 +3,7 @@ package com.probation.myapplication.ui.statistics
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.data.*
@@ -12,14 +13,16 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.probation.myapplication.R
 import com.probation.myapplication.databinding.FragmentStatisticsBinding
 import com.probation.myapplication.utils.setData
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.random.Random
 
+@AndroidEntryPoint
 class StatisticsFragment : Fragment() {
 
-    private lateinit var sViewModel:StatisticsViewModel
+    private val sViewModel:StatisticsViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -28,9 +31,9 @@ class StatisticsFragment : Fragment() {
     ): View? {
         val binding =FragmentStatisticsBinding.inflate(inflater)
 
-        val application= requireNotNull(activity).application
-        val factory=StatisticsViewModelFactory(application)
-        sViewModel=ViewModelProvider(this,factory).get(StatisticsViewModel::class.java)
+//        val application= requireNotNull(activity).application
+//        val factory=StatisticsViewModelFactory(application)
+//        sViewModel=ViewModelProvider(this,factory).get(StatisticsViewModel::class.java)
 
         binding.apply {
             chart.description.text=""

@@ -1,14 +1,16 @@
 package com.probation.myapplication.ui.earthquakes
 
 import android.app.Application
+import android.content.Context
 import android.widget.Toast
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.*
 import com.probation.myapplication.database.Earthquake
 import com.probation.myapplication.database.EarthquakeDatabase
 import com.probation.myapplication.database.EarthquakeDatabaseDao
 import com.probation.myapplication.repository.EarthquakesRepository
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.*
 import java.lang.Exception
 
@@ -18,9 +20,15 @@ import java.lang.Exception
     Strong(6),Severe(7),Extreme(8)
 }
 
-class EarthquakeViewModel(application: Application) : AndroidViewModel(application) {
+class EarthquakeViewModel
+@ViewModelInject constructor (
+    private val repository:EarthquakesRepository,
+    @Assisted private val savedStateHandle: SavedStateHandle,
+    @ApplicationContext private val context: Context
+)
+    : ViewModel() {
 
-    private val repository=EarthquakesRepository(EarthquakeDatabase.getInstance(application))
+//    private val repository=EarthquakesRepository(EarthquakeDatabase.getInstance(application))
     private val _earthquakeList=MutableLiveData<List<Earthquake>>()
     val earthquakeList:LiveData<List<Earthquake>> get()=_earthquakeList
 
@@ -48,7 +56,7 @@ class EarthquakeViewModel(application: Application) : AndroidViewModel(applicati
         }
         catch (e:Exception)
         {
-            Toast.makeText(getApplication(),"${e.message}",Toast.LENGTH_LONG).show()
+            Toast.makeText(context,"${e.message}",Toast.LENGTH_LONG).show()
         }
         _earthquakeList.value= withContext(Dispatchers.IO){ repository.getEarthquakeListByMMI(type)}
         _isRefreshing.value=false

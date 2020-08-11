@@ -1,12 +1,12 @@
 package com.probation.myapplication.ui.statistics
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.*
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.data.PieEntry
 import com.google.android.material.snackbar.Snackbar
@@ -15,6 +15,7 @@ import com.probation.myapplication.database.statisticsType
 import com.probation.myapplication.repository.EarthquakesRepository
 import com.probation.myapplication.utils.toListOfBarEntry
 import com.probation.myapplication.utils.toListOfPieEntry
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.*
 import java.lang.Exception
 
@@ -24,9 +25,13 @@ enum class ShowChart
 }
 
 
-class StatisticsViewModel(application: Application) : AndroidViewModel(application) {
+class StatisticsViewModel @ViewModelInject constructor(
+    @Assisted private val savedStateHandle: SavedStateHandle,
+    @ApplicationContext private val context: Context,
+    private val repository:EarthquakesRepository
+) : ViewModel() {
 
-    private val repository=EarthquakesRepository(EarthquakeDatabase.getInstance(application))
+//    private val repository=EarthquakesRepository(EarthquakeDatabase.getInstance(application))
 
     private val job= Job()
 
@@ -60,7 +65,7 @@ class StatisticsViewModel(application: Application) : AndroidViewModel(applicati
             }
             catch (e:Exception)
             {
-                Toast.makeText(getApplication(),e.message,Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,e.message,Toast.LENGTH_SHORT).show()
             }
             loadData()
             _isRefreshing.value=false
