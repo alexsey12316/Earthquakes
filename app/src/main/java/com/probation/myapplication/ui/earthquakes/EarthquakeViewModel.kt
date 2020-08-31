@@ -50,8 +50,6 @@ class EarthquakeViewModel
         _isRefreshing.value=true
         try
         {
-            repository.quickRefreshEarthquakes()
-            _earthquakeList.value= withContext(Dispatchers.IO){ repository.getEarthquakeListByMMI(type)}
             repository.refreshEarthquakes()
         }
         catch (e:Exception)
